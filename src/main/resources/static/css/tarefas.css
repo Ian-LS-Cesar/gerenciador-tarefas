@@ -1,0 +1,41 @@
+#container-criar-tarefa {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 50px; 
+  }
+  
+.criar-tarefa {
+    position: relative; 
+    right: 0;
+}
+
+#tarefas-container {
+    margin-top: 50px; 
+}
+
+#criar-tarefa-button{
+    background: #f84c5e !important;
+    border: #f84c5e !important;
+    height: 50px;
+    width: 160px;   
+    font-size: large !important;
+}
+
+.tarefa-pendente {
+    border-radius: 8px;
+    border: 2px solid #f94b5f;
+    padding: 10px;
+    margin: 10px 0;
+    height:200px;
+    width: 500px;
+}
+
+.tarefa-finalizada{
+    border-radius: 8px;
+    border: 2px solid #46fa4f;
+    padding: 10px;
+    margin: 10px 0;
+    height:200px;
+    width: 500px;
+}
+
