@@ -19,7 +19,7 @@ public class Usuario {
     @Column(name = "id_usuario")
     private int id_usuario;
 
-    @Column(name = "nome_usuario")
+    @Column(name = "nome")
     private String nome;
 
     @Column(name = "email")

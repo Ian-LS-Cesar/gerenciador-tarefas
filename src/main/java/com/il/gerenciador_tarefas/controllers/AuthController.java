@@ -1,10 +1,12 @@
 package com.il.gerenciador_tarefas.controllers;
 
 import com.il.gerenciador_tarefas.models.Usuario;
+import com.il.gerenciador_tarefas.models.Funcao;
 import com.il.gerenciador_tarefas.dto.LoginRequestDTO;
 import com.il.gerenciador_tarefas.dto.RegisterRequestDTO;
 import com.il.gerenciador_tarefas.dto.ResponseDTO;
 import com.il.gerenciador_tarefas.infra.security.TokenService;
+import com.il.gerenciador_tarefas.repositories.FuncaoRepository;
 import com.il.gerenciador_tarefas.repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AuthController {
     private final UsuarioRepository usuarioRepository;
+    private final FuncaoRepository funcaoRepository;
     private final PasswordEncoder passwordEncoder;
     private final TokenService tokenService;
 
@@ -40,8 +43,11 @@ public class AuthController {
         Optional<Usuario> usuario = this.usuarioRepository.findByEmail(body.email());
 
         if(usuario.isEmpty()) {
+            Funcao funcao = funcaoRepository.findById(body.funcao())
+            .orElseThrow(() -> new RuntimeException("Função não encontrada"));
+            
             Usuario novoUsuario = new Usuario();
-            novoUsuario.setFuncao(body.funcao());
+            novoUsuario.setFuncao(funcao);
             novoUsuario.setSenha(passwordEncoder.encode(body.senha()));
             novoUsuario.setEmail(body.email());
             novoUsuario.setNome(body.nome());
