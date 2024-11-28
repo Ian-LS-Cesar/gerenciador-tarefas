@@ -26,14 +26,16 @@
         <img class="img" src="/images/imgbranca.png" alt="Logo" />
       </div>
       <br>
-      <form action="/auth/login" method="POST">
+      
+      <form id="login-form">
+        
         <div class="mb-3">
-          <label for="login-usuario" class="form-label">Email</label>
+          <label for="login-email" class="form-label">Email</label>
           <input
             type="email"
             name="email"
             class="form-control"
-            id="login-usuario"
+            id="login-email"
             placeholder="Usuário"
           />
         </div>
@@ -47,12 +49,14 @@
             id="login-senha"
             placeholder="Senha"
           />
+          
           <div class="col-auto">
             <button type="submit" class=" btn btn-primary mb-3" id="login-submit">
               Entrar
             </button>
           </div>
       </form>
+
         <div class="ir-para-cadastro">
           <a th:href="@{/cadastro}" style="color: white;">Não tem conta? Ir para o cadastro</a>
         </div>

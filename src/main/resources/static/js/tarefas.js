@@ -1,4 +1,6 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+
+    //Criação de Tarefas
     var tituloTarefaInput = document.getElementById('titulo-tarefa');
     var descricaoTarefaInput = document.getElementById('descricao-tarefa');
     var prazoTarefaInput = document.getElementById('prazo-tarefa');
@@ -8,6 +10,14 @@ document.addEventListener('DOMContentLoaded', function () {
     salvarButton.addEventListener('click', function () {
         criarTarefa();
     });
+
+
+    if(!token){
+        alert("Você precisa estar logado!");
+        window.location.href = '/';
+        return;
+    }
+
 
     function formatarData(dateString){
         const date = new Date(dateString);
@@ -61,4 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
         tarefasFinalizadasDiv.appendChild(tarefa);
         tarefa.querySelector('.botao-finalizar-tarefa').remove();
     }
+
+
 });

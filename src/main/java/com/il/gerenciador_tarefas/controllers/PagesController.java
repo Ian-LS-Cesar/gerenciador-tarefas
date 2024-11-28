@@ -17,8 +17,8 @@ public class PagesController {
         return "cadastro"; 
     }
 
-    @GetMapping("/tarefas")
-    public String tarefas() {
-        return "tarefas"; 
+    @GetMapping("/gerenciador")
+    public String gerenciador() {
+        return "gerenciador"; 
     }
 }
