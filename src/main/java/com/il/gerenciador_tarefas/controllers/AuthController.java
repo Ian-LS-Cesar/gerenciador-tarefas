@@ -7,7 +7,6 @@ import com.il.gerenciador_tarefas.dto.ResponseDTO;
 import com.il.gerenciador_tarefas.infra.security.TokenService;
 import com.il.gerenciador_tarefas.repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;

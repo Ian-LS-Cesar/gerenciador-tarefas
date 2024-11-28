@@ -28,7 +28,8 @@ public class Usuario {
     @Column(name = "senha")
     private String senha;
 
-    @Column(name = "funcao")
-    private int funcao;
+    @ManyToOne
+    @JoinColumn(name = "funcao", referencedColumnName = "id_funcao")
+    private Funcao funcao;
 
 }
