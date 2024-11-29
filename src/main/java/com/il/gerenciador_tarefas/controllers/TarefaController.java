@@ -8,15 +8,19 @@ import com.il.gerenciador_tarefas.repositories.StatusTarefaRepository;
 import com.il.gerenciador_tarefas.repositories.TarefaRepository;
 import com.il.gerenciador_tarefas.repositories.UsuarioRepository;
 import com.il.gerenciador_tarefas.models.StatusTarefa;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/tarefa")
@@ -45,14 +49,33 @@ public class TarefaController {
         
         novaTarefa.setTitulo(tarefaDTO.titulo());
         novaTarefa.setDescricao(tarefaDTO.descricao());
-        novaTarefa.setStatusTarefa(statusTarefa);
+        novaTarefa.setStatus_tarefa(statusTarefa);
         novaTarefa.setPrazo(tarefaDTO.prazo());
-        novaTarefa.setCriadorTarefa(criadorTarefa);
-        novaTarefa.setExecutorTarefa(executorTarefa);
+        novaTarefa.setCriador_tarefa(criadorTarefa);
+        novaTarefa.setExecutor_tarefa(executorTarefa);
 
         this.tarefaRepository.save(novaTarefa);
 
-        return ResponseEntity.ok(new TarefaResponseDTO(novaTarefa.getTitulo(),novaTarefa.getDescricao()));
+        return ResponseEntity.ok(new TarefaResponseDTO(novaTarefa.getTitulo(),novaTarefa.getDescricao(), novaTarefa.getPrazo()));
 
     }
+
+    @GetMapping("/listar")
+    public ResponseEntity<Map<String, List<TarefaResponseDTO>>> listarTarefas() {
+        List<Tarefa> tarefas = tarefaRepository.findAll();
+        
+        
+        Map<String, List<TarefaResponseDTO>> tarefasPorStatus = new HashMap<>();
+        
+        for (Tarefa tarefa : tarefas) {
+            String descricaoStatus = tarefa.getStatus_tarefa().getDescricaoStatusTarefa();
+            
+            tarefasPorStatus.putIfAbsent(descricaoStatus, new ArrayList<>());
+            
+            tarefasPorStatus.get(descricaoStatus).add(new TarefaResponseDTO(tarefa.getTitulo(), tarefa.getDescricao(), tarefa.getPrazo()));
+        }
+        
+        return ResponseEntity.ok(tarefasPorStatus);
+    }
+
 }

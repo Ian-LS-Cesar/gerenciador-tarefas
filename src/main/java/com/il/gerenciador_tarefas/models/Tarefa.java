@@ -32,14 +32,14 @@ public class Tarefa {
 
     @ManyToOne
     @JoinColumn(name = "status_tarefa", referencedColumnName = "id_status")
-    private StatusTarefa statusTarefa;
+    private StatusTarefa status_tarefa;
 
     @ManyToOne
     @JoinColumn(name = "criador_tarefa", referencedColumnName = "id_usuario")
-    private Usuario criadorTarefa;
+    private Usuario criador_tarefa;
 
     @ManyToOne
     @JoinColumn(name = "executor_tarefa", referencedColumnName = "id_usuario")
-    private Usuario executorTarefa;
+    private Usuario executor_tarefa;
 
 }
