@@ -18,7 +18,7 @@ public class Tarefa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tarefa")
-    private Integer id;
+    private Integer id_tarefa;
 
     @Column(name = "titulo")
     private String titulo;
@@ -31,15 +31,15 @@ public class Tarefa {
     private LocalDate prazo;
 
     @ManyToOne
-    @JoinColumn(name = "status_tarefa")
+    @JoinColumn(name = "status_tarefa", referencedColumnName = "id_status")
     private StatusTarefa statusTarefa;
 
     @ManyToOne
-    @JoinColumn(name = "criador_tarefa")
+    @JoinColumn(name = "criador_tarefa", referencedColumnName = "id_usuario")
     private Usuario criadorTarefa;
 
     @ManyToOne
-    @JoinColumn(name = "executor_tarefa")
+    @JoinColumn(name = "executor_tarefa", referencedColumnName = "id_usuario")
     private Usuario executorTarefa;
 
 }

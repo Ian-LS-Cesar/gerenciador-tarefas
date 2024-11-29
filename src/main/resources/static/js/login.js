@@ -17,7 +17,7 @@ document.getElementById('login-form').addEventListener('submit', async function 
             const data = await response.json();
             const token = data.token;
             localStorage.setItem('token', token);
-
+            window.location.href = '/gerenciador';
         } else {
             const errorData = await response.json();
             alert('Login fracassado: ' + errorData.message);

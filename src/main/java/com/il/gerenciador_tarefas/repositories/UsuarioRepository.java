@@ -6,4 +6,5 @@ import com.il.gerenciador_tarefas.models.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
     Optional<Usuario> findByEmail(String email);
+    Optional<Usuario> findById(int _usuario);
 }

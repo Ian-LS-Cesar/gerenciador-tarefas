@@ -11,12 +11,12 @@ import lombok.Setter;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "statusTarefas")
+@Table(name = "status_tarefas")
 public class StatusTarefa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_status")
-    private Integer id;
+    private Integer id_status;
 
     @Column(name = "descricao_status_tarefa")
     private String descricaoStatusTarefa;

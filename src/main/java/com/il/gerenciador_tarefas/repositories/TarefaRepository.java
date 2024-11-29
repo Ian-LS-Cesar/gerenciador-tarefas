@@ -5,6 +5,6 @@ import com.il.gerenciador_tarefas.models.Tarefa;
 import java.util.Optional;
 
 public interface TarefaRepository extends JpaRepository<Tarefa, Integer>{
-    Optional<Tarefa> findById(int id_tarefa);
+    Optional<Tarefa> findById(int id_status);
 
 }
