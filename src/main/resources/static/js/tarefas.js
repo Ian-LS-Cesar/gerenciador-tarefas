@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <p>${tarefa.descricao}</p>
                 <p><strong>Prazo: </strong>${tarefa.prazo}</p>
                 <button type="button" class="botao-reprovar-tarefa btn btn-danger" data-id="${tarefa.id_tarefa} status="${tarefa.status_tarefa}">Retornar tarefa</button>
-                <button type="button" class="botao-aprovar-tarefa btn btn-success" data-id="${tarefa.id_tarefa} status="${tarefa.status_tarefa}">Enviar para aprovação</button>
+                <button type="button" class="botao-aprovar-tarefa btn btn-success" data-id="${tarefa.id_tarefa} status="${tarefa.status_tarefa}">Aprovar</button>
                 `;
                 listaTarefasFeedback.appendChild(tarefaDiv);
                 const reprovarButton = tarefaDiv.querySelector('.botao-reprovar-tarefa');

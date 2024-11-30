@@ -7,7 +7,7 @@ body {
 }
 
 .navbar {
-    height: 100vh; 
+    height: auto; 
     width: 200px; 
     background-color: #2783fe; 
     padding: 10px; /* Padding */
@@ -56,3 +56,4 @@ body {
 #links-navbar{
     margin-top: 120px;
 }
+
