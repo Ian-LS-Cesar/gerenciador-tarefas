@@ -44,7 +44,7 @@
 
 .tarefa-finalizada{
     border-radius: 8px;
-    border: 2px solid #46fa4f;
+    border: 2px solid #149b1b;
     padding: 10px;
     margin: 10px 0;
     height:200px;
@@ -53,16 +53,16 @@
 
 .tarefas-wrapper {
     display: flex;
-    justify-content: space-between; /* Distributes space evenly */
-    flex-wrap: wrap; /* Allows wrapping to the next line if there's not enough space */
+    justify-content: space-between; 
+    flex-wrap: wrap;
 }
 
 #tarefas-pendentes, #tarefas-feedback, #tarefas-concluídas {
-    flex: 1; /* Allows each task group to grow equally */
-    min-width: 300px; /* Ensures a minimum width for each task group */
-    margin: 10px; /* Adds some spacing between the groups */
-    background: #f8f9fa; /* Optional: adds a background color */
-    padding: 15px; /* Optional: adds padding inside each group */
-    border-radius: 5px; /* Optional: adds rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+    flex: 1; 
+    min-width: 300px; 
+    margin: 10px; 
+    background: #f8f9fa;
+    padding: 15px; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
