@@ -5,7 +5,7 @@ document.getElementById('cadastro-form').addEventListener('submit', async functi
     const email = document.getElementById('cadastro-email').value
     const senha = document.getElementById('cadastro-senha').value
     const funcao = document.getElementById('cadastro-funcao').value;
-
+    
     try{
         const response = await fetch('/auth/cadastro',{
             method: 'POST',

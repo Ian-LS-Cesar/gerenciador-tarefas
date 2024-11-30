@@ -33,8 +33,8 @@ public class SecurityConfig {
                         .requestMatchers("/gerenciador","/favicon.ico","/js/**","/images/**","/css/**", "/cadastro", "/" ).permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/cadastro").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/tarefa/criar").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/tarefa/listar").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/tarefa/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/tarefa/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);

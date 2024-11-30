@@ -30,6 +30,15 @@
     width: 500px;
 }
 
+.tarefa-feedback{
+    border-radius: 8px;
+    border: 2px solid rgb(243, 164, 17);
+    padding: 10px;
+    margin: 10px 0;
+    height:200px;
+    width: 500px;
+}
+
 .tarefa-finalizada{
     border-radius: 8px;
     border: 2px solid #46fa4f;

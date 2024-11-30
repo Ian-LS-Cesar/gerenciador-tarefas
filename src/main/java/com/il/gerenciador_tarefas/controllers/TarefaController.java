@@ -2,6 +2,7 @@ package com.il.gerenciador_tarefas.controllers;
 
 import com.il.gerenciador_tarefas.models.Usuario;
 import com.il.gerenciador_tarefas.models.Tarefa;
+import com.il.gerenciador_tarefas.dto.FeedbackDTO;
 import com.il.gerenciador_tarefas.dto.TarefaDTO;
 import com.il.gerenciador_tarefas.dto.TarefaResponseDTO;
 import com.il.gerenciador_tarefas.repositories.StatusTarefaRepository;
@@ -56,7 +57,7 @@ public class TarefaController {
 
         this.tarefaRepository.save(novaTarefa);
 
-        return ResponseEntity.ok(new TarefaResponseDTO(novaTarefa.getTitulo(),novaTarefa.getDescricao(), novaTarefa.getPrazo()));
+        return ResponseEntity.ok(new TarefaResponseDTO(novaTarefa.getId_tarefa(), novaTarefa.getTitulo(),novaTarefa.getDescricao(), novaTarefa.getPrazo(), novaTarefa.getStatus_tarefa().getId_status()));
 
     }
 
@@ -72,10 +73,31 @@ public class TarefaController {
             
             tarefasPorStatus.putIfAbsent(descricaoStatus, new ArrayList<>());
             
-            tarefasPorStatus.get(descricaoStatus).add(new TarefaResponseDTO(tarefa.getTitulo(), tarefa.getDescricao(), tarefa.getPrazo()));
+            tarefasPorStatus.get(descricaoStatus).add(new TarefaResponseDTO(tarefa.getId_tarefa() ,tarefa.getTitulo(), tarefa.getDescricao(), tarefa.getPrazo(), tarefa.getStatus_tarefa().getId_status()));
         }
         
         return ResponseEntity.ok(tarefasPorStatus);
+    }
+
+    @PostMapping("/status")
+    public ResponseEntity<Void> feedbackTarefa(@RequestBody FeedbackDTO feedbackDTO) {
+        Optional<Tarefa> tarefaOptional = tarefaRepository.findById(feedbackDTO.id_tarefa());
+
+        if (!tarefaOptional.isPresent()){
+            return ResponseEntity.notFound().build();
+        }
+
+        Tarefa tarefa = tarefaOptional.get();
+
+        Optional<StatusTarefa> novoStatus = statusTarefaRepository.findById(feedbackDTO.novo_status_tarefa());
+        if (!novoStatus.isPresent()){
+            return ResponseEntity.badRequest().build();
+        }
+
+        tarefa.setStatus_tarefa(novoStatus.get());
+        tarefaRepository.save(tarefa);
+
+        return ResponseEntity.ok().build();
     }
 
 }
